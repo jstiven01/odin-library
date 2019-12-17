@@ -12,6 +12,11 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
+function deleteBookFromLibrary(index){
+    myLibrary.splice(index, 1);
+    console.log("mylibrary deleted", myLibrary);
+}
+
 function render() {
   let table = document.querySelector(".book-list");
   generateTable(table, myLibrary[myLibrary.length-1], myLibrary.length-1);
@@ -21,6 +26,7 @@ function generateTable(table, element, index) {
 
     let row = table.insertRow();
     let button = document.createElement('button');
+    button.className = "delete-button"
     button.setAttribute('data-index', index)
     button.innerHTML = 'Delete';
     for (key in element) {
@@ -48,6 +54,7 @@ render();
 console.log(myLibrary)
 
 const button_newBook = document.querySelector("#new-book");
+const table_bookList = document.querySelector(".book-list")
 function addBookEvent(){
     console.log(this);
     const title = document.querySelector("#title");
@@ -57,7 +64,22 @@ function addBookEvent(){
     addBookToLibrary(newBook);
     render();
 }
+
+function tableEvent(event){
+
+    if (!event.target.classList.contains('delete-button')) return;
+
+    let index_to_delete = event.target.dataset['index'];
+
+    deleteBookFromLibrary(index_to_delete);
+    this.innerHTML = "";
+
+    console.log("Oi button", index_to_delete);
+    //render();
+    
+}
 button_newBook.addEventListener('click', addBookEvent);
+table_bookList.addEventListener('click', tableEvent);
 
 
 
