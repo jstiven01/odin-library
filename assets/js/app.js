@@ -1,4 +1,3 @@
-console.log("this is a test");
 let myLibrary = [];
 
 function Book(title, author, pages, status) {
@@ -14,12 +13,10 @@ function addBookToLibrary(book) {
 
 function deleteBookFromLibrary(index){
     myLibrary.splice(index, 1);
-    console.log("mylibrary deleted", myLibrary);
 }
 
 function updateStatusInLibrary(index, status) {
   myLibrary[index].status = status;
-  console.log(myLibrary[index]);
 }
 
 function render(newBook = null) {
@@ -53,40 +50,28 @@ function generateTable(table, element, index) {
       } else {
         cell.appendChild(text);
       }
-      console.log(key);
     }
     let buttonCell = row.insertCell();
     buttonCell.appendChild(button);
 }
 
 
-/* 
-book1 = new Book("Harry Potter I", "Rowling", "880", "Read");
-book2 = new Book("Harry Potter II", "Rowling", "780", "Read");
-book3 = new Book("Harry Potter III", "Rowling", "80", "Read");
-
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
-render();
-*/
-
-console.log(myLibrary)
-
 const button_newBook = document.querySelector("#new-book");
 const table_bookList = document.querySelector(".body-book-list")
 
 function addBookEvent(){
-    console.log(this);
-    const title = document.querySelector("#title");
-    const author = document.querySelector("#author");
-    const pages = document.querySelector("#pages");
+
+  const title = document.querySelector("#title");
+  const author = document.querySelector("#author");
+  const pages = document.querySelector("#pages");
+  if(title.value != "" && author.value !="" && pages.value !=""){
     const newBook = new Book(title.value, author.value, pages.value, "Unread");
     title.value  = ""; 
     author.value  = "";
     pages.value  = "";
     addBookToLibrary(newBook);
     render(newBook);
+  }
 }
 
 function tableEvent(event){
@@ -98,7 +83,6 @@ function tableEvent(event){
     deleteBookFromLibrary(index_to_delete);
     this.innerHTML = "";
 
-    console.log("Oi button", index_to_delete);
     render();
   } else if (event.target.classList.contains('status-button')) {
 
