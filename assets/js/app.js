@@ -29,15 +29,15 @@ function generateTable(table, element, index) {
   button.className = 'delete-button';
   button.setAttribute('data-index', index);
   button.innerHTML = 'Delete';
-  for (let key in element) {
-    if ({}.hasOwnProperty.call(element, key)) {
-      const cell = row.insertCell();
-      const text = document.createTextNode(element[key]);
-      if (key === 'status') {
-        cell.appendChild(statusButton);
-      } else {
-        cell.appendChild(text);
-      }
+
+  for (let key = 0; key < Object.values(element).length; key++) {
+
+    const cell = row.insertCell();
+    const text = document.createTextNode(Object.values(element)[key]);
+    if (key === 'status') {
+      cell.appendChild(statusButton);
+    } else {
+      cell.appendChild(text);
     }
   }
   const buttonCell = row.insertCell();
