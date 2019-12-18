@@ -18,13 +18,13 @@
 👤 **Amanda Vieira**
 
 - Github: [@vieiramanda11](https://github.com/vieiramanda11)
-- Twitter: [@twitterhandle](https://twitter.com/mndvr_)
+- Twitter: [@mndvr_](https://twitter.com/mndvr_)
 - Linkedin: [linkedin](https://www.linkedin.com/in/amandavieira23/)
 
 👤 **Johan Stiven Tinjacá Tocora**
 
-- Github: [@githubhandle](https://github.com/jstiven01)
-- Twitter: [@twitterhandle](https://twitter.com/TinjacaJohan)
+- Github: [@jstiven01](https://github.com/jstiven01)
+- Twitter: [@TinjacaJohan](https://twitter.com/TinjacaJohan)
 - Linkedin: [linkedin](https://www.linkedin.com/in/johanstiventinjaca/)
 
 

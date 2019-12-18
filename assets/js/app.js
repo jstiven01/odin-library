@@ -1,4 +1,4 @@
-let myLibrary = [];
+const myLibrary = [];
 
 function Book(title, author, pages, status) {
   this.title = title;
@@ -19,21 +19,10 @@ function updateStatusInLibrary(index, status) {
   myLibrary[index].status = status;
 }
 
-function render(newBook = null) {
-  let table = document.querySelector(".body-book-list");
-  if (newBook == null) {
-    for (let i = 0; i < myLibrary.length; i++) {
-      generateTable(table, myLibrary[i], i);
-    }
-  } else {
-    generateTable(table, newBook, myLibrary.length - 1);
-  }
-}
-
 function generateTable(table, element, index) {
-  let row = table.insertRow();
-  let button = document.createElement("button");
-  let statusButton = document.createElement("button");
+  const row = table.insertRow();
+  const button = document.createElement("button");
+  const statusButton = document.createElement("button");
   statusButton.className = "status-button";
   statusButton.textContent = "Unread";
   statusButton.setAttribute("data-index", index);
@@ -52,6 +41,18 @@ function generateTable(table, element, index) {
   let buttonCell = row.insertCell();
   buttonCell.appendChild(button);
 }
+
+function render(newBook = null) {
+  const table = document.querySelector(".body-book-list");
+  if (newBook == null) {
+    for (let i = 0; i < myLibrary.length; i += 1) {
+      generateTable(table, myLibrary[i], i);
+    }
+  } else {
+    generateTable(table, newBook, myLibrary.length - 1);
+  }
+}
+
 
 const button_newBook = document.querySelector("#new-book");
 const table_bookList = document.querySelector(".body-book-list");
