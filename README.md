@@ -10,7 +10,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://jstiven01.github.io/odin-library/)
 
 
 ## Authors
