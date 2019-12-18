@@ -17,9 +17,16 @@ function deleteBookFromLibrary(index){
     console.log("mylibrary deleted", myLibrary);
 }
 
-function render() {
-  let table = document.querySelector(".book-list");
-  generateTable(table, myLibrary[myLibrary.length-1], myLibrary.length-1);
+function render(newBook = null) {
+
+  let table = document.querySelector(".body-book-list");
+  if (newBook == null) {
+    for(let i=0; i< myLibrary.length; i++){
+      generateTable(table, myLibrary[i], i);
+    }
+  }else{
+    generateTable(table, newBook, myLibrary.length-1);
+  }
 }
 
 function generateTable(table, element, index) {
@@ -54,15 +61,19 @@ render();
 console.log(myLibrary)
 
 const button_newBook = document.querySelector("#new-book");
-const table_bookList = document.querySelector(".book-list")
+const table_bookList = document.querySelector(".body-book-list")
+
 function addBookEvent(){
     console.log(this);
     const title = document.querySelector("#title");
     const author = document.querySelector("#author");
     const pages = document.querySelector("#pages");
     const newBook = new Book(title.value, author.value, pages.value, "Unread");
+    title.value  = ""; 
+    author.value  = "";
+    pages.value  = "";
     addBookToLibrary(newBook);
-    render();
+    render(newBook);
 }
 
 function tableEvent(event){
@@ -75,7 +86,7 @@ function tableEvent(event){
     this.innerHTML = "";
 
     console.log("Oi button", index_to_delete);
-    //render();
+    render();
     
 }
 button_newBook.addEventListener('click', addBookEvent);
