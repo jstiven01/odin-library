@@ -33,7 +33,7 @@ function generateTable(table, element, index) {
   for (let key = 0; key < Object.values(element).length; key += 1) {
     const cell = row.insertCell();
     const text = document.createTextNode(Object.values(element)[key]);
-    if (key === 'status') {
+    if (Object.keys(element)[key] === 'status') {
       cell.appendChild(statusButton);
     } else {
       cell.appendChild(text);
