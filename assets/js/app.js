@@ -17,6 +17,11 @@ function deleteBookFromLibrary(index){
     console.log("mylibrary deleted", myLibrary);
 }
 
+function updateStatusInLibrary(index, status) {
+  myLibrary[index].status = status;
+  console.log(myLibrary[index]);
+}
+
 function render(newBook = null) {
 
   let table = document.querySelector(".body-book-list");
@@ -33,13 +38,21 @@ function generateTable(table, element, index) {
 
     let row = table.insertRow();
     let button = document.createElement('button');
+    let statusButton = document.createElement('button')
+    statusButton.className = 'status-button'
+    statusButton.textContent = 'Unread';
+    statusButton.setAttribute('data-index', index)
     button.className = "delete-button"
     button.setAttribute('data-index', index)
     button.innerHTML = 'Delete';
     for (key in element) {
       let cell = row.insertCell();
       let text = document.createTextNode(element[key]);
-      cell.appendChild(text);
+      if (key == 'status') {
+        cell.appendChild(statusButton);
+      } else {
+        cell.appendChild(text);
+      }
       console.log(key);
     }
     let buttonCell = row.insertCell();
@@ -78,7 +91,7 @@ function addBookEvent(){
 
 function tableEvent(event){
 
-    if (!event.target.classList.contains('delete-button')) return;
+    if (event.target.classList.contains('delete-button')) {
 
     let index_to_delete = event.target.dataset['index'];
 
@@ -87,8 +100,20 @@ function tableEvent(event){
 
     console.log("Oi button", index_to_delete);
     render();
-    
+  } else if (event.target.classList.contains('status-button')) {
+
+    let index_to_update = event.target.dataset['index'];
+
+      if (event.target.textContent == 'Unread') {
+        event.target.textContent = 'Read';
+        updateStatusInLibrary(index_to_update, 'Read');
+      } else {
+        event.target.textContent = 'Unread';
+        updateStatusInLibrary(index_to_update, 'Unread');
+      }
+    }
 }
+
 button_newBook.addEventListener('click', addBookEvent);
 table_bookList.addEventListener('click', tableEvent);
 
