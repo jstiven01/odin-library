@@ -45,7 +45,7 @@ function generateTable(table, element, index) {
     button.className = "delete-button"
     button.setAttribute('data-index', index)
     button.innerHTML = 'Delete';
-    for (key in element) {
+    for (let key in element) {
       let cell = row.insertCell();
       let text = document.createTextNode(element[key]);
       if (key == 'status') {
