@@ -30,12 +30,14 @@ function generateTable(table, element, index) {
   button.setAttribute('data-index', index);
   button.innerHTML = 'Delete';
   for (let key in element) {
-    const cell = row.insertCell();
-    const text = document.createTextNode(element[key]);
-    if (key === 'status') {
-      cell.appendChild(statusButton);
-    } else {
-      cell.appendChild(text);
+    if ({}.hasOwnProperty.call(element, key)) {
+      const cell = row.insertCell();
+      const text = document.createTextNode(element[key]);
+      if (key === 'status') {
+        cell.appendChild(statusButton);
+      } else {
+        cell.appendChild(text);
+      }
     }
   }
   const buttonCell = row.insertCell();
