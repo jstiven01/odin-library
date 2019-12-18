@@ -1,0 +1,22 @@
+{
+  "name": "odin-library",
+  "version": "1.0.0",
+  "description": "Microverse Odin Library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jstiven01/odin-library.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jstiven01/odin-library/issues"
+  },
+  "homepage": "https://github.com/jstiven01/odin-library#readme",
+  "devDependencies": {
+    "eslint": "^6.7.2"
+  }
+}
