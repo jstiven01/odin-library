@@ -38,7 +38,7 @@ function generateTable(table, element, index) {
       cell.appendChild(text);
     }
   }
-  let buttonCell = row.insertCell();
+  const buttonCell = row.insertCell();
   buttonCell.appendChild(button);
 }
 
@@ -54,14 +54,14 @@ function render(newBook = null) {
 }
 
 
-const button_newBook = document.querySelector('#new-book');
-const table_bookList = document.querySelector('.body-book-list');
+const buttonNewBook = document.querySelector('#new-book');
+const tableBookList = document.querySelector('.body-book-list');
 
 function addBookEvent() {
   const title = document.querySelector('#title');
   const author = document.querySelector('#author');
   const pages = document.querySelector('#pages');
-  if (title.value != '' && author.value != '' && pages.value != '') {
+  if (title.value !== '' && author.value !== '' && pages.value !== '') {
     const newBook = new Book(title.value, author.value, pages.value, 'Unread');
     title.value = '';
     author.value = '';
@@ -73,24 +73,24 @@ function addBookEvent() {
 
 function tableEvent(event) {
   if (event.target.classList.contains('delete-button')) {
-    let index_to_delete = event.target.dataset['index'];
+    const indexToDelete = event.target.dataset.index;
 
-    deleteBookFromLibrary(index_to_delete);
+    deleteBookFromLibrary(indexToDelete);
     this.innerHTML = '';
 
     render();
   } else if (event.target.classList.contains('status-button')) {
-    let index_to_update = event.target.dataset['index'];
+    const indexToUpdate = event.target.dataset.index;
 
-    if (event.target.textContent == 'Unread') {
+    if (event.target.textContent === 'Unread') {
       event.target.textContent = 'Read';
-      updateStatusInLibrary(index_to_update, 'Read');
+      updateStatusInLibrary(indexToUpdate, 'Read');
     } else {
       event.target.textContent = 'Unread';
-      updateStatusInLibrary(index_to_update, 'Unread');
+      updateStatusInLibrary(indexToUpdate, 'Unread');
     }
   }
 }
 
-button_newBook.addEventListener('click', addBookEvent);
-table_bookList.addEventListener('click', tableEvent);
+buttonNewBook.addEventListener('click', addBookEvent);
+tableBookList.addEventListener('click', tableEvent);
